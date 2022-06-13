@@ -12,6 +12,7 @@ public class Account {
     @Id
     private Long id;
     private String name;
+
     private Long balance;
 
     @DBRef(lazy = true)

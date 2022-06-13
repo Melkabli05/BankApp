@@ -5,18 +5,18 @@ import com.starter.app.model.Transaction;
 import com.starter.app.security.service.TransactionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@Slf4j @RestController @RequiredArgsConstructor
-
+@Slf4j
+@RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/v1/transaction")
 public class TransactionController {
 
-    public final TransactionService transactionService;
+    private final TransactionService transactionService;
 
 
-    @RequestMapping("/from")
+    @GetMapping("/fromAccount")
     public Transaction findByFromAccount(Account fromAccount) {
         try {
             log.info("attempting to find transaction by fromAccount: {}", fromAccount);
@@ -27,7 +27,7 @@ public class TransactionController {
         }
     }
 
-    @RequestMapping("/to")
+    @GetMapping("/toAccount")
     public Transaction findByToAccount(Account toAccount) {
         try {
             log.info("attempting to find transaction by toAccount: {}", toAccount);
@@ -38,7 +38,7 @@ public class TransactionController {
         }
     }
 
-    @RequestMapping("/delete/from")
+    @DeleteMapping("/delete/fromAccount")
     public void deleteByFromAccount(Account fromAccount) {
         try {
             log.info("attempting to delete transaction by fromAccount: {}", fromAccount);
@@ -53,7 +53,7 @@ public class TransactionController {
         }
     }
 
-    @RequestMapping("/delete/to")
+    @DeleteMapping("/delete/toAccount")
     public void deleteByToAccount(Account toAccount) {
         try {
             log.info("attempting to delete transaction by toAccount: {}", toAccount);
@@ -68,7 +68,7 @@ public class TransactionController {
         }
     }
 
-    @RequestMapping("/create")
+    @PostMapping("/create")
     public Transaction createTransaction(Transaction transaction) {
         try {
             log.info("attempting to create transaction: {}", transaction);
@@ -78,7 +78,6 @@ public class TransactionController {
             throw new RuntimeException(e);
         }
     }
-
 
 
 }
