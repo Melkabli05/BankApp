@@ -1,5 +1,4 @@
-# Spring Boot starter project
- *Spring Boot Boilerplate* is a **starter kit**. This project is very simple and useful.
+# Spring Boot Bank app
  
 ## Technologies 
 - Spring Boot (v2.3.3)
